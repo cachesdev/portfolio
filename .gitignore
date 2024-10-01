@@ -2,7 +2,7 @@ posts/**
 node_modules/
 bin/
 temp/
-
+logs/
 
 
 
