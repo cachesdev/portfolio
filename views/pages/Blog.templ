@@ -4,18 +4,60 @@ import "chipa.me/views/layouts"
 
 templ Blog(model BlogModel) {
 	@layouts.Base(model.Title) {
-		<div class="font-poppins flex gap-8 flex-col">
-			for _, post := range model.Posts {
-				<div class="flex flex-col">
-					<a class="text-3xl link link-hover" href={ templ.URL("/blog/" + post.Slug) }>{ post.Title }</a>
-					<ul class="text-sm text-center flex gap-2 items-center">
-						<li>Published: { post.CreatedAt.Format("2006-01-02 15:04") }</li>
-						for _, tag := range post.Tags {
-							<li class=" badge badge-sm badge-accent text-center">{ tag }</li>
-						}
-					</ul>
-					<p class="mt-1">{ post.Description }</p>
-				</div>
+		<div class="font-poppins gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
+			for idx, post := range model.Posts {
+				if idx == 0 {
+					<div class="card dark:bg-base-300 dark:text-base-content bg-neutral text-neutral-content col-span-1 md:col-span-2 lg:col-span-8 shadow-xl">
+						<div class="card-body">
+							<h2 class="flex flex-col gap-2 items-start">
+								<div class="card-title">
+									<a class="text-3xl link link-hover" href={ templ.URL("/blog/" + post.Slug) }>{ post.Title }</a>
+									<div class="badge badge-secondary hidden md:block">LATEST</div>
+								</div>
+								<div class="flex gap-2">
+									<div class="badge badge-secondary">Published: { post.CreatedAt.Format("2006-01-02 15:04") }</div>
+									<div class="badge badge-secondary md:hidden block">LATEST</div>
+								</div>
+							</h2>
+							<p>{ post.Description }</p>
+							<div class="card-actions justify-end">
+								for _, tag := range post.Tags {
+									<div class="badge badge-outline">{ tag }</div>
+								}
+							</div>
+						</div>
+					</div>
+				} else if idx == 1 {
+					<div class="card dark:bg-base-300 dark:text-base-content bg-neutral text-neutral-content col-span-1 md:col-span-2 lg:col-span-4 shadow-xl">
+						<div class="card-body">
+							<h2 class="card-title flex flex-col items-start">
+								<a class="text-2xl link link-hover" href={ templ.URL("/blog/" + post.Slug) }>{ post.Title }</a>
+								<div class="badge badge-secondary">Published: { post.CreatedAt.Format("2006-01-02 15:04") }</div>
+							</h2>
+							<p>{ post.Description }</p>
+							<div class="card-actions justify-end">
+								for _, tag := range post.Tags {
+									<div class="badge badge-outline">{ tag }</div>
+								}
+							</div>
+						</div>
+					</div>
+				} else {
+					<div class="card dark:bg-neutral dark:text-neutral-content bg-base-300 text-base-content col-span-1 md:col-span-1 lg:col-span-4 row-span-4 shadow-xl">
+						<div class="card-body">
+							<h2 class="card-title flex flex-col items-start">
+								<a class="text-2xl link link-hover" href={ templ.URL("/blog/" + post.Slug) }>{ post.Title }</a>
+								<div class="badge badge-secondary">Published: { post.CreatedAt.Format("2006-01-02 15:04") }</div>
+							</h2>
+							<p>{ post.Description }</p>
+							<div class="card-actions justify-end">
+								for _, tag := range post.Tags {
+									<div class="badge badge-outline">{ tag }</div>
+								}
+							</div>
+						</div>
+					</div>
+				}
 			}
 		</div>
 	}

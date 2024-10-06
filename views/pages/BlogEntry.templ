@@ -5,13 +5,62 @@ import "chipa.me/views/layouts"
 // I need to do some apply directives to the .chroma class
 templ BlogEntry(model BlogEntryModel) {
 	@layouts.Base(model.Title) {
-		<div class="flex self-center gap-8 pt-8 mb-8">
-			<div class="font-poppins prose prose-lg max-w-none w-[800px]">
+		<div class="grid md:grid-cols-12 gap-8 pt-8 mb-8">
+			<div class="font-poppins col-span-12 md:col-span-9 prose prose-lg max-w-none">
 				@templ.Raw(model.Post)
 			</div>
-			<div class="prose font-poppins sticky top-12 max-h-[calc(100vh-250px)] w-[300px]">
-				<div class="text-2xl">Table Of Contents</div>
+			<div id="toc" class="md:block hidden font-poppins prose prose-li:list-none prose-ul:my-0 prose-ul:px-1 prose-a:no-underline prose-li:my-0 sticky col-span-3 top-12 max-h-[calc(100vh-250px)]">
+				<div class="text-2xl text-warning">on this page</div>
 				@templ.Raw(model.Toc)
+				<script>
+					onloadAdd(_ => {
+					let tocItems = any('li a', me('#toc'));
+					let sections = any('h1, h2, h3, h4, h5, h6');
+					
+					// Helper function to get the current section
+					function getCurrentSection() {
+						let currentSection;
+						sections.forEach(section => {
+						let sectionTop = section.offsetTop;
+						let sectionHeight = section.clientHeight;
+						if (window.scrollY >= sectionTop - sectionHeight / 3) {
+							currentSection = section;
+						}
+						});
+						return currentSection;
+					}
+
+					// Function to update TOC highlighting
+					function updateTOC() {
+						let currentSection = getCurrentSection();
+						if (!currentSection) return;
+
+						tocItems.forEach(item => {
+						// TODO: Could be better
+						item.addClass('transition-all')
+						item.addClass('duration-100')
+						item.addClass('text-sm')
+						let href = item.getAttribute('href');
+						let isActive = href === `#${currentSection.id}`;
+						item.classToggleList('text-orange-400 dark:text-primary text-md font-bold', isActive);
+						});
+					}
+
+					// Update on scroll with debounce for performance
+					let scrollTimeout;
+					window.addEventListener('scroll', _ => {
+						if (scrollTimeout) {
+						window.cancelAnimationFrame(scrollTimeout);
+						}
+						scrollTimeout = window.requestAnimationFrame(_ => {
+						updateTOC();
+						});
+					});
+
+					// Initial update
+					updateTOC();
+					});
+				</script>
 			</div>
 		</div>
 	}

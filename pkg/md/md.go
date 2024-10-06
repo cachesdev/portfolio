@@ -2,6 +2,7 @@ package md
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 
 	chromastyles "github.com/alecthomas/chroma/v2/styles"
@@ -44,13 +45,18 @@ func (md *Markdown) RenderTOC(post []byte) (string, error) {
 		return "", fmt.Errorf("[RenderTOC]: %w", err)
 	}
 
+	// WARNING: Can panic if `toc` is nil
 	toc := toc.RenderList(tree)
+	if toc == nil { // IS NOT
+		return "", errors.New("[RenderTOC] No hay titulos, TOC es nil")
+	}
 	err = md.Renderer().Render(&bufTOC, post, toc)
 	if err != nil {
 		return "", fmt.Errorf("[RenderTOC]: %w", err)
 	}
 
 	return bufTOC.String(), nil
+
 }
 
 func (md *Markdown) RenderBody(post []byte) (string, error) {

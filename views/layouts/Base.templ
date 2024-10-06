@@ -1,8 +1,6 @@
 package layouts
 
-import (
-	"chipa.me/views/components"
-)
+import "chipa.me/views/components"
 
 templ Base(title string) {
 	<!DOCTYPE html>
@@ -22,7 +20,7 @@ templ Base(title string) {
 		</head>
 		<body class="flex flex-col flex-1 min-h-[100dvh] overflow-x-clip">
 			@components.Header()
-			<main class="max-w-screen-lg w-full flex flex-1 p-4 lg:py-4 lg:px-1 self-center">
+			<main class="max-w-screen-xl w-full flex flex-1 p-4 lg:py-4 lg:px-1 self-center">
 				{ children... }
 			</main>
 			@components.Footer()

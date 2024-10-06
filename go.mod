@@ -6,6 +6,7 @@ require (
 	github.com/a-h/templ v0.2.778
 	github.com/adrg/frontmatter v0.2.0
 	github.com/alecthomas/chroma/v2 v2.14.0
+	github.com/k0kubun/pp/v3 v3.2.0
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/labstack/gommon v0.4.2
 	github.com/rs/zerolog v1.33.0

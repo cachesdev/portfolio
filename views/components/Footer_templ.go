@@ -31,7 +31,7 @@ func Footer() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer class=\"flex font-poppins justify-center items-center bg-primary-content text-neutral-content footer footer-center mt-auto flex-wrap\"><aside><p class=\"font-bold\">Gustavo Dominguez<br>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer class=\"flex font-poppins p-2 justify-center items-center bg-primary-content text-neutral-content footer footer-center mt-auto flex-wrap\"><aside><p class=\"font-bold\">Gustavo Dominguez<br>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

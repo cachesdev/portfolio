@@ -44,7 +44,7 @@ func BlogEntry(model BlogEntryModel) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex self-center gap-8 pt-8 mb-8\"><div class=\"font-poppins prose prose-lg max-w-none w-[800px]\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"grid md:grid-cols-12 gap-8 pt-8 mb-8\"><div class=\"font-poppins col-span-12 md:col-span-9 prose prose-lg max-w-none\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -52,7 +52,7 @@ func BlogEntry(model BlogEntryModel) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"prose font-poppins sticky top-12 max-h-[calc(100vh-250px)] w-[300px]\"><div class=\"text-2xl\">Table Of Contents</div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div id=\"toc\" class=\"md:block hidden font-poppins prose prose-li:list-none prose-ul:my-0 prose-ul:px-1 prose-a:no-underline prose-li:my-0 sticky col-span-3 top-12 max-h-[calc(100vh-250px)]\"><div class=\"text-2xl text-warning\">on this page</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -60,7 +60,7 @@ func BlogEntry(model BlogEntryModel) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script>\n\t\t\t\t\tonloadAdd(_ => {\n\t\t\t\t\tlet tocItems = any('li a', me('#toc'));\n\t\t\t\t\tlet sections = any('h1, h2, h3, h4, h5, h6');\n\t\t\t\t\t\n\t\t\t\t\t// Helper function to get the current section\n\t\t\t\t\tfunction getCurrentSection() {\n\t\t\t\t\t\tlet currentSection;\n\t\t\t\t\t\tsections.forEach(section => {\n\t\t\t\t\t\tlet sectionTop = section.offsetTop;\n\t\t\t\t\t\tlet sectionHeight = section.clientHeight;\n\t\t\t\t\t\tif (window.scrollY >= sectionTop - sectionHeight / 3) {\n\t\t\t\t\t\t\tcurrentSection = section;\n\t\t\t\t\t\t}\n\t\t\t\t\t\t});\n\t\t\t\t\t\treturn currentSection;\n\t\t\t\t\t}\n\n\t\t\t\t\t// Function to update TOC highlighting\n\t\t\t\t\tfunction updateTOC() {\n\t\t\t\t\t\tlet currentSection = getCurrentSection();\n\t\t\t\t\t\tif (!currentSection) return;\n\n\t\t\t\t\t\ttocItems.forEach(item => {\n\t\t\t\t\t\t// TODO: Could be better\n\t\t\t\t\t\titem.addClass('transition-all')\n\t\t\t\t\t\titem.addClass('duration-100')\n\t\t\t\t\t\titem.addClass('text-sm')\n\t\t\t\t\t\tlet href = item.getAttribute('href');\n\t\t\t\t\t\tlet isActive = href === `#${currentSection.id}`;\n\t\t\t\t\t\titem.classToggleList('text-orange-400 dark:text-primary text-md font-bold', isActive);\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\n\t\t\t\t\t// Update on scroll with debounce for performance\n\t\t\t\t\tlet scrollTimeout;\n\t\t\t\t\twindow.addEventListener('scroll', _ => {\n\t\t\t\t\t\tif (scrollTimeout) {\n\t\t\t\t\t\twindow.cancelAnimationFrame(scrollTimeout);\n\t\t\t\t\t\t}\n\t\t\t\t\t\tscrollTimeout = window.requestAnimationFrame(_ => {\n\t\t\t\t\t\tupdateTOC();\n\t\t\t\t\t\t});\n\t\t\t\t\t});\n\n\t\t\t\t\t// Initial update\n\t\t\t\t\tupdateTOC();\n\t\t\t\t\t});\n\t\t\t\t</script></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

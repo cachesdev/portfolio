@@ -36,7 +36,8 @@ module.exports = {
 
           "accent-content": "#100609",
 
-          neutral: "oklch(0.34 0.01 0)",
+          // neutral: "oklch(0.34 0.01 0)",
+          neutral: "oklch(0.30 0.01 0)",
 
           "neutral-content": "oklch(0.81 0.06 81.19)",
 

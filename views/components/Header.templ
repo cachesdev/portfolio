@@ -1,7 +1,7 @@
 package components
 
 templ Header() {
-	<div class="sticky h-12 xl:top-2 top-0 w-full max-w-screen-xl mx-auto flex font-cascadia items-center justify-center">
+	<div class="sticky h-12 xl:top-2 top-0 w-full max-w-screen-xl mx-auto z-10 flex font-cascadia items-center justify-center">
 		<ul id="header" hx-preserve class="transition-[all,width] flex duration-300 lg:rounded-box bg-primary-content text-neutral-content px-2 h-12 items-center flex-grow">
 			<li id="logo-lg" class="mr-auto text-3xl hidden md:block"><a class="contents" href="/">{ "{cachesdev}" }</a></li>
 			<li id="logo-sm" class="mr-auto text-3xl md:hidden"><a class="contents" href="/">{ "{kch}" }</a></li>
