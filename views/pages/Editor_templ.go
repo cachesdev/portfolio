@@ -10,8 +10,7 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import "chipa.me/views/layouts"
 
-// I need to do some apply directives to the .chroma class
-func Home(model HomeModel) templ.Component {
+func Editor(model EditorModel) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -44,6 +43,10 @@ func Home(model HomeModel) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col items-center w-[1200px] flex-1 self-center mb-8\"><textarea class=\"textarea text-lg textarea-bordered bg-primary-content text-neutral-content mt-8 font-poppins h-[400px] w-full\" id=\"content\" name=\"content\" hx-post=\"/blog/edit\" hx-trigger=\"keyup changed, load\" hx-target=\"#result\"></textarea><div class=\"prose prose-lg mt-8 max-w-none mr-auto\" id=\"result\"></div></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 			return templ_7745c5c3_Err
 		})
 		templ_7745c5c3_Err = layouts.Base(model.Title).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)

@@ -1,0 +1,22 @@
+package pages
+
+import "chipa.me/views/layouts"
+
+templ Blog(model BlogModel) {
+	@layouts.Base(model.Title) {
+		<div class="font-poppins flex gap-8 flex-col">
+			for _, post := range model.Posts {
+				<div class="flex flex-col">
+					<a class="text-3xl link link-hover" href={ templ.URL("/blog/" + post.Slug) }>{ post.Title }</a>
+					<ul class="text-sm text-center flex gap-2 items-center">
+						<li>Published: { post.CreatedAt.Format("2006-01-02 15:04") }</li>
+						for _, tag := range post.Tags {
+							<li class=" badge badge-sm badge-accent text-center">{ tag }</li>
+						}
+					</ul>
+					<p class="mt-1">{ post.Description }</p>
+				</div>
+			}
+		</div>
+	}
+}

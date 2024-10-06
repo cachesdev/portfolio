@@ -5,14 +5,5 @@ import "chipa.me/views/layouts"
 // I need to do some apply directives to the .chroma class
 templ Home(model HomeModel) {
 	@layouts.Base(model.Title) {
-		<div class="flex self-center gap-8 pt-8">
-			<div class="font-lato prose max-w-none w-[800px]">
-				@templ.Raw(model.Post)
-			</div>
-			<div class="prose sticky top-12 max-h-[calc(100vh-250px)] w-[300px]">
-				<div class="text-2xl">Table Of Contents</div>
-				@templ.Raw(model.Toc)
-			</div>
-		</div>
 	}
 }

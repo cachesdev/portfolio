@@ -2,71 +2,34 @@ package layouts
 
 import (
 	"chipa.me/views/components"
-	"strconv"
-	"time"
 )
 
 templ Base(title string) {
 	<!DOCTYPE html>
-	<html lang="en" data-theme="retro">
+	<html lang="en" data-theme="mocha">
 		<head>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link rel="stylesheet" href="/static/css/output.css"/>
 			<script src="/static/lib/theme-change.js"></script>
+			<script src="/static/lib/htmx.min.js"></script>
+			<script src="/static/lib/surreal.js"></script>
 			<script src="/static/js/index.js"></script>
+			<script>
+			htmx.logAll();
+			</script>
 			<title>{ title }</title>
 		</head>
 		<body class="flex flex-col flex-1 min-h-[100dvh] overflow-x-clip">
-			@Header()
-			{ children... }
-			@Footer()
-			<script src="https://unpkg.com/lucide@latest"></script>
+			@components.Header()
+			<main class="max-w-screen-lg w-full flex flex-1 p-4 lg:py-4 lg:px-1 self-center">
+				{ children... }
+			</main>
+			@components.Footer()
+			<script src="/static/lib/lucide.min.js"></script>
 			<script>
    				lucide.createIcons();
   			</script>
 		</body>
 	</html>
-}
-
-templ Header() {
-	<div>
-		<ul class="flex font-cascadia mx-80 items-center h-12">
-			<li class="mr-auto text-3xl"><a href="/">{ "{cachesdev}" }</a></li>
-			<li class="text-2xl">
-				<ul class="flex gap-3 font-lato font-medium items-center">
-					<li><a href="/">Portfolio</a></li>
-					<li>
-						<a href="/blog">
-							<span class="text-primary">{ "{" }</span>
-							Blog
-							<span class="text-primary">{ "}" }</span>
-						</a>
-					</li>
-					<li><a href="/about">About</a></li>
-					<li>
-						@components.SuperThemeSwitcher()
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-}
-
-templ Footer() {
-	<footer class="footer footer-center p-10 mt-auto">
-		<aside>
-			<div class="font-cascadia text-5xl">{ "{cachesdev}" }</div>
-			<p class="font-bold">
-				Gustavo Dominguez
-				<br/>
-				Giving unwanted advice since 1999
-			</p>
-			<p>Copyright © { currentYear() } - All right reserved</p>
-		</aside>
-	</footer>
-}
-
-func currentYear() string {
-	return strconv.Itoa(time.Now().Year())
 }
