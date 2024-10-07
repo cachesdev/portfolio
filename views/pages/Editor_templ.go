@@ -43,7 +43,7 @@ func Editor(model EditorModel) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col items-center w-[1200px] flex-1 self-center mb-8\"><textarea class=\"textarea text-lg textarea-bordered bg-primary-content text-neutral-content mt-8 font-poppins h-[400px] w-full\" id=\"content\" name=\"content\" hx-post=\"/blog/edit\" hx-trigger=\"keyup changed, load\" hx-target=\"#result\"></textarea><div class=\"prose prose-lg mt-8 max-w-none mr-auto\" id=\"result\"></div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"mb-8 flex w-[1200px] flex-1 flex-col items-center self-center\"><textarea class=\"textarea textarea-bordered mt-8 h-[400px] w-full bg-primary-content font-poppins text-lg text-neutral-content\" id=\"content\" name=\"content\" hx-post=\"/blog/edit\" hx-trigger=\"keyup changed, load\" hx-target=\"#result\"></textarea><div class=\"prose prose-lg mr-auto mt-8 max-w-none\" id=\"result\"></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

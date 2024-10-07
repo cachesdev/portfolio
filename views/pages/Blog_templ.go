@@ -43,13 +43,13 @@ func Blog(model BlogModel) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"font-poppins gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"grid grid-cols-1 gap-8 font-poppins md:grid-cols-2 lg:grid-cols-12\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			for idx, post := range model.Posts {
 				if idx == 0 {
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card dark:bg-base-300 dark:text-base-content bg-neutral text-neutral-content col-span-1 md:col-span-2 lg:col-span-8 shadow-xl\"><div class=\"card-body\"><h2 class=\"flex flex-col gap-2 items-start\"><div class=\"card-title\"><a class=\"text-3xl link link-hover\" href=\"")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card col-span-1 bg-neutral text-neutral-content shadow-xl dark:bg-base-300 dark:text-base-content md:col-span-2 lg:col-span-8\"><div class=\"card-body\"><h2 class=\"flex flex-col items-start gap-2\"><div class=\"card-title\"><a class=\"link-hover link text-3xl\" href=\"")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -84,7 +84,7 @@ func Blog(model BlogModel) templ.Component {
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"badge badge-secondary md:hidden block\">LATEST</div></div></h2><p>")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"badge badge-secondary block md:hidden\">LATEST</div></div></h2><p>")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -125,7 +125,7 @@ func Blog(model BlogModel) templ.Component {
 						return templ_7745c5c3_Err
 					}
 				} else if idx == 1 {
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card dark:bg-base-300 dark:text-base-content bg-neutral text-neutral-content col-span-1 md:col-span-2 lg:col-span-4 shadow-xl\"><div class=\"card-body\"><h2 class=\"card-title flex flex-col items-start\"><a class=\"text-2xl link link-hover\" href=\"")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card col-span-1 bg-neutral text-neutral-content shadow-xl dark:bg-base-300 dark:text-base-content md:col-span-2 lg:col-span-4\"><div class=\"card-body\"><h2 class=\"card-title flex flex-col items-start\"><a class=\"link-hover link text-2xl\" href=\"")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -201,7 +201,7 @@ func Blog(model BlogModel) templ.Component {
 						return templ_7745c5c3_Err
 					}
 				} else {
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card dark:bg-neutral dark:text-neutral-content bg-base-300 text-base-content col-span-1 md:col-span-1 lg:col-span-4 row-span-4 shadow-xl\"><div class=\"card-body\"><h2 class=\"card-title flex flex-col items-start\"><a class=\"text-2xl link link-hover\" href=\"")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card col-span-1 row-span-4 bg-base-300 text-base-content shadow-xl dark:bg-neutral dark:text-neutral-content md:col-span-1 lg:col-span-4\"><div class=\"card-body\"><h2 class=\"card-title flex flex-col items-start\"><a class=\"link-hover link text-2xl\" href=\"")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
