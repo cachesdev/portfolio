@@ -29,14 +29,14 @@ func Header() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"sticky h-12 xl:top-2 top-0 w-full max-w-screen-xl mx-auto z-10 flex font-cascadia items-center justify-center\"><ul id=\"header\" hx-preserve class=\"transition-[all,width] flex duration-300 lg:rounded-box bg-primary-content text-neutral-content px-2 h-12 items-center flex-grow\"><li id=\"logo-lg\" class=\"mr-auto text-3xl hidden md:block\"><a class=\"contents\" href=\"/\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"sticky top-0 z-10 mx-auto flex h-12 w-full max-w-screen-xl items-center justify-center font-cascadia xl:top-2\"><ul id=\"header\" hx-preserve class=\"flex h-12 flex-grow items-center bg-primary-content px-2 text-neutral-content transition-[all,width] duration-300 lg:rounded-box\"><li id=\"logo-lg\" class=\"mr-auto hidden text-3xl md:block\"><a class=\"contents\" href=\"/\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs("{cachesdev}")
+		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs("{TEST hola mundo 123}")
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/Header.templ`, Line: 6, Col: 105}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/Header.templ`, Line: 6, Col: 115}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -55,7 +55,7 @@ func Header() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></li><li class=\"text md:text-2xl transition-all duration-300 overflow-hidden\"><ul id=\"botonera\" class=\"flex gap-3 font-poppins font-medium items-center transition-all duration-300 max-h-12 opacity-100 max-w-fit\"><li><a href=\"/\">Portfolio</a></li><li><a href=\"/blog\"><span class=\"text-primary\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></li><li class=\"text overflow-hidden transition-all duration-300 md:text-2xl\"><ul id=\"botonera\" class=\"flex max-h-12 max-w-fit items-center gap-3 font-poppins font-medium opacity-100 transition-all duration-300\"><li><a href=\"/\">Portfolio</a></li><li><a href=\"/blog\"><span class=\"text-primary\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -89,7 +89,7 @@ func Header() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</li></ul></li><li id=\"botonera-parent\" class=\"w-0\"><label id=\"search\" class=\"input input-bordered input-sm flex items-center gap-2 transition-all duration-300 max-h-0 opacity-0 overflow-hidden\"><button class=\"w-16 text-opacity-70 text-left font-cascadia text-base-content\">Search</button><div class=\"flex items-center justify-end -mr-2 gap-1\"><kbd class=\"kbd kbd-sm text-base-content\">ctrl</kbd> <kbd class=\"kbd kbd-sm text-base-content\">K</kbd></div></label></li></ul></div><script>\n\tonloadAdd(_ => {\n\t\tlet header = me(\"#header\");\n\t\tlet botonera = me(\"#botonera\");\n\t\tlet botoneraParent = me(\"#botonera-parent\");\n\t\tlet search = me(\"#search\");\n\n\t\twindow.addEventListener('scroll', _ => {\n\t\t\tlet scrolled = window.scrollY > 50;\n\t\t\t// header\n\t\t\theader.classToggleList('dark:bg-opacity-50 mt-2 bg-opacity-80 backdrop-blur-sm gap-2 rounded-box', scrolled)\n\t\t\theader.classToggleList('flex-grow', !scrolled);\n\n\t\t\t// botonera\n\t\t\tbotonera.classToggleList('max-h-0 max-w-0 opacity-0 max-w-fit pointer-events-none', scrolled)\n\t\t\tbotonera.classToggleList('max-h-12 max-w-fit lg:opacity-100', !scrolled)\n\t\t\tbotoneraParent.classToggle('w-fit', scrolled);\n\n\t\t\t// search\n\t\t\tsearch.classToggleList('max-h-0 max-w-0 opacity-0', !scrolled)\n\t\t\tsearch.classToggleList('max-h-12 max-w-fit opacity-100 pointer-events-auto', scrolled)\n\t\t});\n\t});\n\t</script>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</li></ul></li><li id=\"botonera-parent\" class=\"w-0\"><label id=\"search\" class=\"input input-sm input-bordered flex max-h-0 items-center gap-2 overflow-hidden opacity-0 transition-all duration-300\"><button class=\"w-16 text-left font-cascadia text-base-content text-opacity-70\">Search</button><div class=\"-mr-2 flex items-center justify-end gap-1\"><kbd class=\"kbd kbd-sm text-base-content\">ctrl</kbd> <kbd class=\"kbd kbd-sm text-base-content\">K</kbd></div></label></li></ul></div><script>\n\tonloadAdd(_ => {\n\t\tlet header = me(\"#header\");\n\t\tlet botonera = me(\"#botonera\");\n\t\tlet botoneraParent = me(\"#botonera-parent\");\n\t\tlet search = me(\"#search\");\n\n\t\twindow.addEventListener('scroll', _ => {\n\t\t\tlet scrolled = window.scrollY > 50;\n\t\t\t// header\n\t\t\theader.classToggleList('dark:bg-opacity-50 mt-2 bg-opacity-80 backdrop-blur-sm gap-2 rounded-box', scrolled)\n\t\t\theader.classToggleList('flex-grow', !scrolled);\n\n\t\t\t// botonera\n\t\t\tbotonera.classToggleList('max-h-0 max-w-0 opacity-0 max-w-fit pointer-events-none', scrolled)\n\t\t\tbotonera.classToggleList('max-h-12 max-w-fit lg:opacity-100', !scrolled)\n\t\t\tbotoneraParent.classToggle('w-fit', scrolled);\n\n\t\t\t// search\n\t\t\tsearch.classToggleList('max-h-0 max-w-0 opacity-0', !scrolled)\n\t\t\tsearch.classToggleList('max-h-12 max-w-fit opacity-100 pointer-events-auto', scrolled)\n\t\t});\n\t});\n\t</script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
