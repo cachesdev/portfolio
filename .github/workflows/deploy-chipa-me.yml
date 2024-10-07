@@ -41,6 +41,11 @@ jobs:
                   SERVER_IP: ${{ secrets.SERVER_IP }}
                   SERVER_USER: ${{ secrets.SERVER_USER }}
               run: |
+                  # Stop the service before deployment
+                  ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} '
+                  sudo systemctl stop chipa-me.service || true
+                  '
+
                   # Create directory structure on the server
                   ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'mkdir -p ~/chipa-me/bin ~/chipa-me/static ~/chipa-me/posts'
 
@@ -67,9 +72,9 @@ jobs:
 
                   # Reload systemd, enable and restart the service
                   ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} '
-                    sudo systemctl daemon-reload
-                    sudo systemctl enable chipa-me.service
-                    sudo systemctl restart chipa-me.service
+                  sudo systemctl daemon-reload
+                  sudo systemctl enable chipa-me.service
+                  sudo systemctl start chipa-me.service
                   '
 
             - name: Verify deployment
