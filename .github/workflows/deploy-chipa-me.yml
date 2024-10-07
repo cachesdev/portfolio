@@ -47,7 +47,7 @@ jobs:
                   # Copy binary, static files, and posts
                   scp -i ~/.ssh/deploy_key ./chipa-me ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/chipa-me/bin/
                   scp -i ~/.ssh/deploy_key -r ./static/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/chipa-me/static/
-                  scp -i ~/.ssh/deploy_key -r ./posts/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/chipa-me/posts/
+                  # scp -i ~/.ssh/deploy_key -r ./posts/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/chipa-me/posts/
 
                   # Create systemd service file
                   echo "[Unit]
