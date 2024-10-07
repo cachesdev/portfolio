@@ -1,0 +1,27 @@
+name: Test SSH Connection
+
+on:
+    workflow_dispatch: # This allows you to run the workflow manually from the Actions tab
+
+jobs:
+    test-ssh:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v2
+
+            - name: Set up SSH key
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+                  chmod 600 ~/.ssh/deploy_key
+                  ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+            - name: Test SSH connection
+              env:
+                  SERVER_IP: ${{ secrets.SERVER_IP }}
+                  SERVER_USER: ${{ secrets.SERVER_USER }}
+              run: |
+                  ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'echo "SSH connection successful" && exit'
