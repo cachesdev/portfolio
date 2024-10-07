@@ -19,7 +19,7 @@ jobs:
                   go-version: "1.23"
 
             - name: Build
-              run: go build -v -o cmd ./cmd
+              run: go build -v -o chipa-me ./cmd
 
             - name: Test
               run: go test -v ./...
@@ -45,7 +45,7 @@ jobs:
                   ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'mkdir -p ~/chipa-me/bin ~/chipa-me/static ~/chipa-me/posts'
 
                   # Copy binary, static files, and posts
-                  scp -i ~/.ssh/deploy_key ./cmd ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/chipa-me/bin/
+                  scp -i ~/.ssh/deploy_key ./chipa-me ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/chipa-me/bin/
                   scp -i ~/.ssh/deploy_key -r ./static/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/chipa-me/static/
                   scp -i ~/.ssh/deploy_key -r ./posts/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/chipa-me/posts/
 
@@ -58,7 +58,7 @@ jobs:
                   [Service]
                   Restart=always
                   Type=simple
-                  ExecStart=/root/chipa-me/bin/cmd
+                  ExecStart=/root/chipa-me/bin/chipa-me
                   WorkingDirectory=/root/chipa-me
                   User=root
 
