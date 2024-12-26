@@ -18,9 +18,9 @@ func newServer(
 	e := echo.New()
 	e.Pre(middleware.RemoveTrailingSlash())
 
-	// e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
-	// 	Level: 6,
-	// }))
+	e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
+		Level: 6,
+	}))
 
 	addRoutes(e, h, postService, md)
 
