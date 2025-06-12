@@ -1,0 +1,16 @@
+when:
+  branch: production
+  event:
+    - pull_request_closed
+    - manual
+
+steps:
+  deploy:
+    image: docker:dind
+    commands:
+      - cd docker
+      - docker-compose build
+      - docker-compose down --remove-orphans
+      - docker-compose up -d
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
