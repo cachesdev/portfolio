@@ -1,0 +1,14 @@
+name: portfolio
+services:
+  sveltekit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio
+    restart: unless-stopped
+    ports:
+      - '5173:5173'
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=5173
