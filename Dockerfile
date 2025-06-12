@@ -12,7 +12,7 @@ FROM node:24-alpine AS runtime
 
 WORKDIR /app
 
-COPY --from=build /app/dist /app/dist
+COPY --from=build /app/build /app/build
 COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/package.json /app/package.json
 
