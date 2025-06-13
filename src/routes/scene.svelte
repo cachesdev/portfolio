@@ -2,7 +2,9 @@
 	import { T, useTask } from '@threlte/core';
 	import { Spring } from 'svelte/motion';
 	import { Grid, Stars } from '@threlte/extras';
-	import { mode } from 'mode-watcher';
+	import { mode, toggleMode } from 'mode-watcher';
+	import Portal from '$lib/tweakpane/portal.svelte';
+	import { Button, Pane, Slider } from 'svelte-tweakpane-ui';
 
 	let scale = new Spring(0.2);
 
@@ -67,13 +69,13 @@
 {#key mode.current}
 	<Stars {rotation} factor={8} lightness={mode.current === 'dark' ? 0.8 : -100} />
 {/key}
-<!-- <Portal>
+<Portal>
 	<Pane title="Tweakpane">
 		<Slider label="Scale" bind:value={scale.target} min={0} max={10} />
 		<Slider label="Plant Count" bind:value={plantCount} min={1} max={50} step={1} />
 		<Button label="Toggle theme" on:click={toggleMode} />
 	</Pane>
-</Portal> -->
+</Portal>
 
 <!-- {#each points as point (point.x + point.z)}
 	<Plant position.x={point.x} position.z={point.z} rotation.y={rotation} scale={scale.current} />
