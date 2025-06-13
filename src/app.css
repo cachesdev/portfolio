@@ -45,6 +45,7 @@
 /* Dark theme tokens */
 .dark {
   --background: var(--gruvbox-dark0);
+  --background-hard: var(--gruvbox-dark-hard);
   --foreground: var(--gruvbox-light1);
   --primary: var(--gruvbox-blue);
   --primary-foreground: var(--gruvbox-dark0);
@@ -87,6 +88,7 @@
 
   /* design tokens */
   --color-background: var(--background);
+  --color-background-hard: var(--background-hard);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
