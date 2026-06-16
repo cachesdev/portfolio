@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Toaster as Sonner, type ToasterProps as SonnerProps } from "svelte-sonner";
-	import { mode } from "mode-watcher";
+	import { Toaster as Sonner, type ToasterProps as SonnerProps } from 'svelte-sonner';
+	import { mode } from 'mode-watcher';
 	import SpinnerIcon from 'phosphor-svelte/lib/Spinner';
 	import CheckCircleIcon from 'phosphor-svelte/lib/CheckCircle';
 	import XCircleIcon from 'phosphor-svelte/lib/XCircle';
@@ -13,22 +13,22 @@
 <Sonner
 	theme={mode.current}
 	class="toaster group"
-	style="--normal-bg: var(--color-popover); --normal-text: var(--color-popover-foreground); --normal-border: var(--color-border);"
+	style="--normal-bg: #09090b; --normal-text: #fafafa; --normal-border: #222225; --success-bg: #09090b; --success-text: #fafafa; --success-border: #222225; --error-bg: #09090b; --error-text: #f85149; --error-border: rgba(209,36,47,0.6); --warning-bg: #09090b; --warning-text: #d1aa24; --warning-border: #222225; --info-bg: #09090b; --info-text: #556af3; --info-border: #222225;"
 	{...restProps}
 >
 	{#snippet loadingIcon()}
-		<SpinnerIcon class="size-4 animate-spin" />
+		<SpinnerIcon class="size-4 animate-spin text-[#556af3]" />
 	{/snippet}
 	{#snippet successIcon()}
-		<CheckCircleIcon class="size-4" />
+		<CheckCircleIcon class="size-4 text-[#28c840]" />
 	{/snippet}
 	{#snippet errorIcon()}
-		<XCircleIcon class="size-4" />
+		<XCircleIcon class="size-4 text-[#f85149]" />
 	{/snippet}
 	{#snippet infoIcon()}
-		<InfoIcon class="size-4" />
+		<InfoIcon class="size-4 text-[#556af3]" />
 	{/snippet}
 	{#snippet warningIcon()}
-		<WarningIcon class="size-4" />
+		<WarningIcon class="size-4 text-[#d1aa24]" />
 	{/snippet}
 </Sonner>

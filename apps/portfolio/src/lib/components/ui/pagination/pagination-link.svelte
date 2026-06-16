@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Pagination as PaginationPrimitive } from "bits-ui";
-	import { cn } from "$lib/utils.js";
-	import { buttonVariants, type ButtonSize } from "$lib/components/ui/button/index.js";
+	import { Pagination as PaginationPrimitive } from 'bits-ui';
+	import { cn } from '$lib/utils.js';
+	import { buttonVariants, type ButtonSize } from '$lib/components/ui/button/index.js';
 	let {
 		ref = $bindable(null),
 		class: className,
-		size = "icon",
+		size = 'icon',
 		isActive,
 		page,
 		children,
@@ -23,13 +23,13 @@
 <PaginationPrimitive.Page
 	bind:ref
 	{page}
-	aria-current={isActive ? "page" : undefined}
+	aria-current={isActive ? 'page' : undefined}
 	data-slot="pagination-link"
 	data-active={isActive}
 	data-size={size}
 	class={cn(
-		buttonVariants({ size, variant: isActive ? "outline" : "ghost" }),
-		"cn-pagination-link",
+		buttonVariants({ size, variant: isActive ? 'outline' : 'ghost' }),
+		'cn-pagination-link rounded-full border-zinc-800 font-mono text-xs font-semibold text-zinc-400 data-active:border-[#556af3] data-active:bg-[#3526ff] data-active:text-white hover:bg-zinc-950 hover:text-white',
 		className
 	)}
 	{...restProps}

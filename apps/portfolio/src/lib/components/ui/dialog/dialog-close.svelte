@@ -1,11 +1,22 @@
 <script lang="ts">
-	import { Dialog as DialogPrimitive } from "bits-ui";
+	import { Dialog as DialogPrimitive } from 'bits-ui';
+	import { cn } from '$lib/utils.js';
 
 	let {
 		ref = $bindable(null),
-		type = "button",
+		type = 'button',
+		class: className,
 		...restProps
 	}: DialogPrimitive.CloseProps = $props();
 </script>
 
-<DialogPrimitive.Close bind:ref data-slot="dialog-close" {type} {...restProps} />
+<DialogPrimitive.Close
+	bind:ref
+	data-slot="dialog-close"
+	class={cn(
+		'outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring/30',
+		className
+	)}
+	{type}
+	{...restProps}
+/>

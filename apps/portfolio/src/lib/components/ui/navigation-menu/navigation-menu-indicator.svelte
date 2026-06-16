@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { NavigationMenu as NavigationMenuPrimitive } from "bits-ui";
-	import { cn } from "$lib/utils.js";
+	import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
+	import { cn } from '$lib/utils.js';
 
 	let {
 		ref = $bindable(null),
@@ -13,10 +13,12 @@
 	bind:ref
 	data-slot="navigation-menu-indicator"
 	class={cn(
-		"data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+		'top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in',
 		className
 	)}
 	{...restProps}
 >
-	<div class="bg-border rounded-none shadow-md relative top-[60%] h-2 w-2 rotate-45"></div>
+	<div
+		class="relative top-[60%] h-2 w-2 rotate-45 border-t border-l border-[#222225] bg-[#09090b] shadow-none"
+	></div>
 </NavigationMenuPrimitive.Indicator>

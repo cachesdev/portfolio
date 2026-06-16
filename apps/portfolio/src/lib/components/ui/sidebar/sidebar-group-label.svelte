@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from "$lib/utils.js";
-	import type { Snippet } from "svelte";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { cn, type WithElementRef } from '$lib/utils.js';
+	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {
 		ref = $bindable(null),
@@ -15,12 +15,12 @@
 
 	const mergedProps = $derived({
 		class: cn(
-			"text-sidebar-foreground/70 ring-sidebar-ring h-8 rounded-none px-3 text-xs font-semibold tracking-wider uppercase transition-[margin,opacity] duration-200 ease-linear group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 focus-visible:ring-2 [&>svg]:size-3.5 flex shrink-0 items-center outline-hidden [&>svg]:shrink-0",
+			'flex h-8 shrink-0 items-center px-3 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-zinc-500 outline-hidden transition-[margin,opacity] duration-200 ease-linear group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 focus-visible:ring-2 focus-visible:ring-zinc-300/60 [&>svg]:size-3.5 [&>svg]:shrink-0',
 			className
 		),
-		"data-slot": "sidebar-group-label",
-		"data-sidebar": "group-label",
-		...restProps,
+		'data-slot': 'sidebar-group-label',
+		'data-sidebar': 'group-label',
+		...restProps
 	});
 </script>
 

@@ -1,7 +1,17 @@
 <script lang="ts">
-	import { Collapsible as CollapsiblePrimitive } from "bits-ui";
+	import { Collapsible as CollapsiblePrimitive } from 'bits-ui';
+	import { cn } from '$lib/utils.js';
 
-	let { ref = $bindable(null), ...restProps }: CollapsiblePrimitive.ContentProps = $props();
+	let {
+		ref = $bindable(null),
+		class: className,
+		...restProps
+	}: CollapsiblePrimitive.ContentProps = $props();
 </script>
 
-<CollapsiblePrimitive.Content bind:ref data-slot="collapsible-content" {...restProps} />
+<CollapsiblePrimitive.Content
+	bind:ref
+	data-slot="collapsible-content"
+	class={cn('bg-black px-3 py-3 text-sm text-zinc-300', className)}
+	{...restProps}
+/>

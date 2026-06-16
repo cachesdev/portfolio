@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from "$lib/utils.js";
-	import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { cn, type WithElementRef } from '$lib/utils.js';
+	import { Skeleton } from '$lib/components/ui/skeleton/index.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {
 		ref = $bindable(null),
@@ -21,14 +21,14 @@
 	bind:this={ref}
 	data-slot="sidebar-menu-skeleton"
 	data-sidebar="menu-skeleton"
-	class={cn("h-8 gap-2 rounded-none px-2 flex items-center", className)}
+	class={cn('flex h-8 items-center gap-2 border border-transparent px-2', className)}
 	{...restProps}
 >
 	{#if showIcon}
-		<Skeleton class="size-3.5 rounded-none" data-sidebar="menu-skeleton-icon" />
+		<Skeleton class="size-3.5 rounded-none bg-[#27272a]" data-sidebar="menu-skeleton-icon" />
 	{/if}
 	<Skeleton
-		class="h-4 max-w-(--skeleton-width) flex-1"
+		class="h-3 max-w-(--skeleton-width) flex-1 rounded-none bg-[#27272a]"
 		data-sidebar="menu-skeleton-text"
 		style="--skeleton-width: {width};"
 	/>

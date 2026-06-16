@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from "$lib/utils.js";
-	import type { HTMLSelectAttributes } from "svelte/elements";
+	import { cn, type WithElementRef } from '$lib/utils.js';
+	import type { HTMLSelectAttributes } from 'svelte/elements';
 	import CaretDownIcon from 'phosphor-svelte/lib/CaretDown';
 
-	type NativeSelectProps = Omit<WithElementRef<HTMLSelectAttributes>, "size"> & {
-		size?: "sm" | "default";
+	type NativeSelectProps = Omit<WithElementRef<HTMLSelectAttributes>, 'size'> & {
+		size?: 'sm' | 'default';
 	};
 
 	let {
 		ref = $bindable(null),
 		value = $bindable(),
 		class: className,
-		size = "default",
+		size = 'default',
 		children,
 		...restProps
 	}: NativeSelectProps = $props();
@@ -19,7 +19,7 @@
 
 <div
 	class={cn(
-		"cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50",
+		'cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50',
 		className
 	)}
 	data-slot="native-select-wrapper"
@@ -30,10 +30,14 @@
 		bind:this={ref}
 		data-slot="native-select"
 		data-size={size}
-		class="border-b-input placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground focus-visible:border-b-ring aria-invalid:border-b-destructive dark:aria-invalid:border-b-destructive/50 h-10 w-full min-w-0 appearance-none rounded-none border border-transparent bg-transparent py-2 pr-8 pl-0 text-sm transition-[color,border-color] select-none data-[size=sm]:h-9 outline-none disabled:pointer-events-none disabled:cursor-not-allowed"
+		class="border-zinc-800 bg-zinc-900 text-zinc-50 placeholder:text-zinc-500 selection:bg-[#3526ff] selection:text-white focus-visible:border-zinc-300 focus-visible:ring-2 focus-visible:ring-zinc-300/25 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 h-9 w-full min-w-0 appearance-none rounded-none border py-2 pr-8 pl-3 text-sm transition-[color,border-color,box-shadow] select-none data-[size=sm]:h-8 outline-none disabled:pointer-events-none disabled:cursor-not-allowed"
 		{...restProps}
 	>
 		{@render children?.()}
 	</select>
-	<CaretDownIcon class="text-muted-foreground top-1/2 right-0 size-3.5 -translate-y-1/2 pointer-events-none absolute select-none" aria-hidden data-slot="native-select-icon" />
+	<CaretDownIcon
+		class="text-zinc-500 top-1/2 right-3 size-3.5 -translate-y-1/2 pointer-events-none absolute select-none"
+		aria-hidden
+		data-slot="native-select-icon"
+	/>
 </div>

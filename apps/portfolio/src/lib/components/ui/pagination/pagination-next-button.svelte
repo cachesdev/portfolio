@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Pagination as PaginationPrimitive } from "bits-ui";
+	import { Pagination as PaginationPrimitive } from 'bits-ui';
 	import CaretRightIcon from 'phosphor-svelte/lib/CaretRight';
-	import { cn } from "$lib/utils.js";
-	import { buttonVariants } from "../button/index.js";
+	import { cn } from '$lib/utils.js';
+	import { buttonVariants } from '../button/index.js';
 
 	let {
 		ref = $bindable(null),
@@ -14,13 +14,17 @@
 
 {#snippet Fallback()}
 	<span>Next</span>
-	<CaretRightIcon class={cn("size-4", className)} />
+	<CaretRightIcon class={cn('size-4', className)} />
 {/snippet}
 
 <PaginationPrimitive.NextButton
 	bind:ref
 	aria-label="Go to next page"
-	class={cn(buttonVariants({ variant: "ghost" }), "pr-2!", className)}
+	class={cn(
+		buttonVariants({ variant: 'ghost' }),
+		'rounded-full border border-zinc-800 bg-black pr-2! font-mono text-xs font-semibold tracking-[0.08em] text-zinc-400 uppercase hover:border-[#556af3] hover:bg-[#3526ff] hover:text-white',
+		className
+	)}
 	{...restProps}
 >
 	{#if children}

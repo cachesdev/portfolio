@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { HTMLAttributes } from "svelte/elements";
-	import type { WithElementRef } from "$lib/utils.js";
-	import { cn } from "$lib/utils.js";
+	import type { HTMLAttributes } from 'svelte/elements';
+	import type { WithElementRef } from '$lib/utils.js';
+	import { cn } from '$lib/utils.js';
 	import MinusIcon from 'phosphor-svelte/lib/Minus';
 
 	let {
@@ -16,12 +16,12 @@
 	bind:this={ref}
 	data-slot="input-otp-separator"
 	role="separator"
-	class={cn("[&_svg:not([class*='size-'])]:size-3.5 flex items-center", className)}
+	class={cn("text-zinc-600 [&_svg:not([class*='size-'])]:size-3.5 flex items-center", className)}
 	{...restProps}
 >
 	{#if children}
 		{@render children?.()}
 	{:else}
-		<MinusIcon  />
+		<MinusIcon />
 	{/if}
 </div>

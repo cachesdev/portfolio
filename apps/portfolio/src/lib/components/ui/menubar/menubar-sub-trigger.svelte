@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Menubar as MenubarPrimitive } from "bits-ui";
-	import { cn, type WithoutChild } from "$lib/utils.js";
+	import { Menubar as MenubarPrimitive } from 'bits-ui';
+	import { cn, type WithoutChild } from '$lib/utils.js';
 	import CaretRightIcon from 'phosphor-svelte/lib/CaretRight';
 
 	let {
@@ -19,11 +19,11 @@
 	data-slot="menubar-sub-trigger"
 	data-inset={inset}
 	class={cn(
-		"focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground gap-2 rounded-none px-3 py-2 text-xs font-medium tracking-wider uppercase data-inset:pl-9.5 [&_svg:not([class*='size-'])]:size-3.5 flex cursor-default items-center outline-none select-none",
+		"flex cursor-default items-center gap-2 border border-transparent px-3 py-2 font-mono text-xs font-medium uppercase tracking-[0.04em] text-zinc-300 outline-none select-none focus:border-[#3526ff]/50 focus:bg-[#18181b] focus:text-zinc-50 data-open:border-[#3526ff]/50 data-open:bg-[#18181b] data-open:text-zinc-50 data-inset:pl-9.5 [&_svg:not([class*='size-'])]:size-3.5",
 		className
 	)}
 	{...restProps}
 >
 	{@render children?.()}
-	<CaretRightIcon class="cn-rtl-flip ml-auto size-4" />
+	<CaretRightIcon class="cn-rtl-flip ml-auto size-4 text-[#556af3]" />
 </MenubarPrimitive.SubTrigger>

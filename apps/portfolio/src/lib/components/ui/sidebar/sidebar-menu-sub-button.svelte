@@ -1,32 +1,32 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from "$lib/utils.js";
-	import type { Snippet } from "svelte";
-	import type { HTMLAnchorAttributes } from "svelte/elements";
+	import { cn, type WithElementRef } from '$lib/utils.js';
+	import type { Snippet } from 'svelte';
+	import type { HTMLAnchorAttributes } from 'svelte/elements';
 
 	let {
 		ref = $bindable(null),
 		children,
 		child,
 		class: className,
-		size = "md",
+		size = 'md',
 		isActive = false,
 		...restProps
 	}: WithElementRef<HTMLAnchorAttributes> & {
 		child?: Snippet<[{ props: Record<string, unknown> }]>;
-		size?: "sm" | "md";
+		size?: 'sm' | 'md';
 		isActive?: boolean;
 	} = $props();
 
 	const mergedProps = $derived({
 		class: cn(
-			"text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground h-7 gap-2 rounded-none px-3 focus-visible:ring-2 data-[size=md]:text-sm data-[size=sm]:text-xs [&>svg]:size-3.5 flex min-w-0 -translate-x-px items-center overflow-hidden outline-hidden group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:shrink-0",
+			'flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden border border-transparent px-3 font-mono text-zinc-400 outline-hidden hover:border-[#3526ff]/50 hover:bg-[#18181b] hover:text-zinc-50 active:border-[#3526ff]/50 active:bg-[#18181b] active:text-zinc-50 data-active:border-[#3526ff]/50 data-active:bg-[#18181b] data-active:text-[#556af3] focus-visible:ring-2 focus-visible:ring-zinc-300/60 data-[size=md]:text-xs data-[size=sm]:text-[11px] data-[size=md]:uppercase data-[size=sm]:uppercase data-[size=md]:tracking-[0.04em] data-[size=sm]:tracking-[0.04em] group-data-[collapsible=icon]:hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-3.5 [&>svg]:shrink-0 [&>svg]:text-[#556af3]',
 			className
 		),
-		"data-slot": "sidebar-menu-sub-button",
-		"data-sidebar": "menu-sub-button",
-		"data-size": size,
-		"data-active": isActive,
-		...restProps,
+		'data-slot': 'sidebar-menu-sub-button',
+		'data-sidebar': 'menu-sub-button',
+		'data-size': size,
+		'data-active': isActive,
+		...restProps
 	});
 </script>
 

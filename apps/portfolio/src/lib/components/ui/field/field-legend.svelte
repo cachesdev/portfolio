@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from "$lib/utils.js";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { cn, type WithElementRef } from '$lib/utils.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {
 		ref = $bindable(null),
 		class: className,
-		variant = "legend",
+		variant = 'legend',
 		children,
 		...restProps
 	}: WithElementRef<HTMLAttributes<HTMLLegendElement>> & {
-		variant?: "legend" | "label";
+		variant?: 'legend' | 'label';
 	} = $props();
 </script>
 
@@ -17,7 +17,10 @@
 	bind:this={ref}
 	data-slot="field-legend"
 	data-variant={variant}
-	class={cn("mb-3 font-semibold uppercase data-[variant=label]:text-xs data-[variant=legend]:text-xs", className)}
+	class={cn(
+		'mb-3 font-mono font-semibold tracking-widest text-zinc-100 uppercase data-[variant=label]:text-xs data-[variant=legend]:text-xs',
+		className
+	)}
 	{...restProps}
 >
 	{@render children?.()}

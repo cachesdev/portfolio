@@ -1,81 +1,80 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
-@import "shadcn-svelte/tailwind.css";
-@import "@fontsource-variable/geist";
+@import 'tw-animate-css';
+@import 'shadcn-svelte/tailwind.css';
+@import '@fontsource-variable/geist';
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.145 0 0);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.145 0 0);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.145 0 0);
-	--primary: oklch(0.205 0 0);
-	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.97 0 0);
-	--secondary-foreground: oklch(0.205 0 0);
-	--muted: oklch(0.97 0 0);
-	--muted-foreground: oklch(0.556 0 0);
-	--accent: oklch(0.97 0 0);
-	--accent-foreground: oklch(0.205 0 0);
-	--destructive: oklch(0.577 0.245 27.325);
-	--border: oklch(0.922 0 0);
-	--input: oklch(0.922 0 0);
-	--ring: oklch(0.708 0 0);
-	--chart-1: oklch(0.87 0 0);
-	--chart-2: oklch(0.556 0 0);
-	--chart-3: oklch(0.439 0 0);
-	--chart-4: oklch(0.371 0 0);
-	--chart-5: oklch(0.269 0 0);
+	color-scheme: dark;
+	--background: #000000;
+	--foreground: #fafafa;
+	--card: #09090b;
+	--card-foreground: #fafafa;
+	--popover: #09090b;
+	--popover-foreground: #fafafa;
+	--primary: #3526ff;
+	--primary-foreground: #ffffff;
+	--secondary: #18181b;
+	--secondary-foreground: #fafafa;
+	--muted: #18181b;
+	--muted-foreground: #a1a1aa;
+	--accent: #27272a;
+	--accent-foreground: #fafafa;
+	--destructive: #f85149;
+	--border: #222225;
+	--input: #18181b;
+	--ring: #d4d4d8;
+	--chart-1: #556af3;
+	--chart-2: #8c4edd;
+	--chart-3: #5945b1;
+	--chart-4: #28c840;
+	--chart-5: #d1aa24;
 	--radius: 0rem;
-	--sidebar: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.145 0 0);
-	--sidebar-primary: oklch(0.205 0 0);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.97 0 0);
-	--sidebar-accent-foreground: oklch(0.205 0 0);
-	--sidebar-border: oklch(0.922 0 0);
-	--sidebar-ring: oklch(0.708 0 0);
+	--sidebar: #000000;
+	--sidebar-foreground: #fafafa;
+	--sidebar-primary: #3526ff;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #18181b;
+	--sidebar-accent-foreground: #fafafa;
+	--sidebar-border: #222225;
+	--sidebar-ring: #d4d4d8;
+	--terminal: #191938;
+	--terminal-foreground: #fafafa;
+	--terminal-muted: #a1a1aa;
+	--terminal-grid: #232324;
+	--terminal-grid-soft: rgb(255 255 255 / 0.045);
+	--terminal-line: #27272a;
+	--terminal-violet: #3526ff;
+	--terminal-violet-soft: #556af3;
+	--terminal-violet-deep: #2e1b9c;
+	--terminal-glow: #8c4edd;
+	--success: #28c840;
+	--warning: #d1aa24;
+	--link: oklch(57.61% 0.2321 258.23);
 }
 
 .dark {
-	--background: oklch(0.145 0 0);
-	--foreground: oklch(0.985 0 0);
-	--card: oklch(0.205 0 0);
-	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.205 0 0);
-	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.922 0 0);
-	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.269 0 0);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.269 0 0);
-	--muted-foreground: oklch(0.708 0 0);
-	--accent: oklch(0.269 0 0);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.704 0.191 22.216);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.556 0 0);
-	--chart-1: oklch(0.87 0 0);
-	--chart-2: oklch(0.556 0 0);
-	--chart-3: oklch(0.439 0 0);
-	--chart-4: oklch(0.371 0 0);
-	--chart-5: oklch(0.269 0 0);
-	--sidebar: oklch(0.205 0 0);
-	--sidebar-foreground: oklch(0.985 0 0);
-	--sidebar-primary: oklch(0.488 0.243 264.376);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.269 0 0);
-	--sidebar-accent-foreground: oklch(0.985 0 0);
-	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.556 0 0);
+	color-scheme: dark;
 }
 
 @theme inline {
 	--font-sans: 'Geist Variable', sans-serif;
+	--font-mono:
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+		monospace;
+	--color-terminal: var(--terminal);
+	--color-terminal-foreground: var(--terminal-foreground);
+	--color-terminal-muted: var(--terminal-muted);
+	--color-terminal-grid: var(--terminal-grid);
+	--color-terminal-line: var(--terminal-line);
+	--color-terminal-violet: var(--terminal-violet);
+	--color-terminal-violet-soft: var(--terminal-violet-soft);
+	--color-terminal-violet-deep: var(--terminal-violet-deep);
+	--color-terminal-glow: var(--terminal-glow);
+	--color-success: var(--success);
+	--color-warning: var(--warning);
+	--color-link: var(--link);
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -122,8 +121,73 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+		font-feature-settings:
+			'rlig' 1,
+			'calt' 1;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: geometricPrecision;
 	}
 	html {
 		@apply font-sans;
+		background: var(--background);
+	}
+	::selection {
+		background: rgb(85 106 243 / 0.35);
+		color: var(--foreground);
+	}
+}
+
+@layer utilities {
+	.terminal-grid {
+		background-image:
+			linear-gradient(var(--terminal-grid-soft) 1px, transparent 1px),
+			linear-gradient(90deg, var(--terminal-grid-soft) 1px, transparent 1px);
+		background-size: 64px 64px;
+		background-position: -1px -1px;
+	}
+
+	.terminal-grid-sm {
+		background-image:
+			linear-gradient(var(--terminal-grid-soft) 1px, transparent 1px),
+			linear-gradient(90deg, var(--terminal-grid-soft) 1px, transparent 1px);
+		background-size: 32px 32px;
+		background-position: -1px -1px;
+	}
+
+	.hairline-frame {
+		@apply border border-border bg-card text-card-foreground shadow-none;
+	}
+
+	.hairline-frame-muted {
+		@apply border border-border bg-muted/60 text-card-foreground shadow-none;
+	}
+
+	.terminal-surface {
+		@apply border border-border bg-terminal text-terminal-foreground shadow-none;
+		box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04);
+	}
+
+	.terminal-label {
+		@apply font-mono text-xs font-semibold tracking-widest text-muted-foreground uppercase;
+	}
+
+	.terminal-link {
+		@apply text-link underline-offset-2 transition-colors hover:text-foreground hover:underline;
+	}
+
+	.terminal-violet-bar {
+		background:
+			linear-gradient(
+				90deg,
+				transparent 0 16%,
+				var(--terminal-violet) 34%,
+				var(--terminal-glow) 62%,
+				transparent 100%
+			),
+			var(--terminal);
+	}
+
+	.inset-hairline {
+		box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
 	}
 }

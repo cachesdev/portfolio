@@ -1,24 +1,26 @@
 <script lang="ts">
-	import { Command as CommandPrimitive } from "bits-ui";
-	import { cn } from "$lib/utils.js";
-	import * as InputGroup from "$lib/components/ui/input-group/index.js";
+	import { Command as CommandPrimitive } from 'bits-ui';
+	import { cn } from '$lib/utils.js';
+	import * as InputGroup from '$lib/components/ui/input-group/index.js';
 	import MagnifyingGlassIcon from 'phosphor-svelte/lib/MagnifyingGlass';
 
 	let {
 		ref = $bindable(null),
 		class: className,
-		value = $bindable(""),
+		value = $bindable(''),
 		...restProps
 	}: CommandPrimitive.InputProps = $props();
 </script>
 
-<div data-slot="command-input-wrapper" class="p-1">
-	<InputGroup.Root class="border-b-input border-transparent bg-transparent px-3">
+<div data-slot="command-input-wrapper" class="border-b border-[#222225] bg-[#09090b] p-1">
+	<InputGroup.Root
+		class="border-transparent bg-[#18181b] px-3 shadow-[inset_0_0_0_1px_rgba(161,161,170,0.12)]"
+	>
 		<CommandPrimitive.Input
 			{value}
 			data-slot="command-input"
 			class={cn(
-				"w-full px-2 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+				'w-full px-2 font-mono text-xs text-zinc-50 placeholder:text-zinc-500 outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
 				className
 			)}
 			{...restProps}
@@ -28,7 +30,7 @@
 			{/snippet}
 		</CommandPrimitive.Input>
 		<InputGroup.Addon>
-			<MagnifyingGlassIcon class="size-3.5 shrink-0 opacity-50" />
+			<MagnifyingGlassIcon class="size-3.5 shrink-0 text-[#556af3] opacity-80" />
 		</InputGroup.Addon>
 	</InputGroup.Root>
 </div>

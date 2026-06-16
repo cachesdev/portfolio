@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from "$lib/utils.js";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { cn, type WithElementRef } from '$lib/utils.js';
+	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {
 		ref = $bindable(null),
@@ -13,7 +13,10 @@
 <div
 	bind:this={ref}
 	data-slot="field-label"
-	class={cn("gap-2 text-xs leading-normal font-semibold uppercase group-data-[disabled=true]/field:opacity-50 in-data-[slot=field-label]:font-semibold flex w-fit items-center leading-snug", className)}
+	class={cn(
+		'gap-2 font-mono text-xs leading-normal font-semibold tracking-widest text-zinc-100 uppercase group-data-[disabled=true]/field:opacity-50 in-data-[slot=field-label]:font-semibold flex w-fit items-center leading-snug',
+		className
+	)}
 	{...restProps}
 >
 	{@render children?.()}

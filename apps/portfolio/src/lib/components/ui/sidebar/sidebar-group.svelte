@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HTMLAttributes } from "svelte/elements";
-	import { cn, type WithElementRef } from "$lib/utils.js";
+	import type { HTMLAttributes } from 'svelte/elements';
+	import { cn, type WithElementRef } from '$lib/utils.js';
 
 	let {
 		ref = $bindable(null),
@@ -14,7 +14,10 @@
 	bind:this={ref}
 	data-slot="sidebar-group"
 	data-sidebar="group"
-	class={cn("p-2 relative flex w-full min-w-0 flex-col", className)}
+	class={cn(
+		'relative flex w-full min-w-0 flex-col border-b border-[#222225] p-2 last:border-b-0',
+		className
+	)}
 	{...restProps}
 >
 	{@render children?.()}
