@@ -105,11 +105,8 @@
 	</span>
 {/snippet}
 
-<section
-	class="terminal-grid relative overflow-hidden border-y border-border bg-background px-4 py-10 text-foreground sm:px-6 lg:px-8"
-	aria-labelledby="display-showcase-title"
->
-	<div class="mx-auto grid max-w-7xl gap-5">
+<section class="relative grid gap-5 text-foreground" aria-labelledby="display-showcase-title">
+	<div class="grid gap-5">
 		<div
 			class="flex flex-col gap-3 border border-border bg-black/80 p-4 sm:flex-row sm:items-end sm:justify-between"
 		>

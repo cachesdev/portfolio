@@ -43,20 +43,20 @@
 </script>
 
 <section
-	class="terminal-grid relative isolate overflow-hidden border-y border-border bg-background px-4 py-12 text-foreground sm:px-6 lg:px-8"
+	class="relative isolate grid gap-5 text-foreground"
 	aria-labelledby="overlays-showcase-title"
 >
 	<Toaster richColors position="bottom-right" />
 
-	<div class="mx-auto flex w-full max-w-6xl flex-col gap-6">
-		<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
-			<div class="space-y-3">
+	<div class="flex w-full flex-col gap-5">
+		<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-stretch">
+			<div class="hairline-frame terminal-grid-sm space-y-3 p-5">
 				<p class="terminal-label">Overlays / command surfaces</p>
 				<h2
 					id="overlays-showcase-title"
-					class="max-w-3xl text-3xl font-semibold text-zinc-50 sm:text-4xl"
+					class="max-w-3xl text-2xl font-semibold tracking-normal text-zinc-50 sm:text-3xl"
 				>
-					Fast overlays for terminal-grade workflows.
+					Overlay command surface
 				</h2>
 				<p class="max-w-2xl text-sm leading-6 text-zinc-400">
 					Dialogs, drawers, menus, hovers, and toasts tuned to the same hard-edged violet system.
@@ -81,7 +81,7 @@
 			</div>
 		</div>
 
-		<div class="grid gap-4 lg:grid-cols-[minmax(0,1.12fr)_minmax(21rem,0.88fr)]">
+		<div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1.12fr)_minmax(21rem,0.88fr)]">
 			<div class="terminal-surface">
 				<div class="flex items-center justify-between border-b border-border px-4 py-3">
 					<div>
@@ -91,7 +91,7 @@
 					<span class="h-2 w-20 bg-[#3526ff]"></span>
 				</div>
 
-				<div class="grid gap-3 p-4 sm:grid-cols-2 xl:grid-cols-5">
+				<div class="grid gap-3 p-4 sm:grid-cols-2">
 					<AlertDialog.Root>
 						<AlertDialog.Trigger>
 							{#snippet child({ props })}
@@ -290,7 +290,7 @@
 			</div>
 		</div>
 
-		<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+		<div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
 			<div class="terminal-surface">
 				<div class="border-b border-border px-4 py-3">
 					<p class="terminal-label">Menus</p>

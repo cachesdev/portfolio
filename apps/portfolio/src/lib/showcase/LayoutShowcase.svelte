@@ -60,7 +60,7 @@
 	<li>
 		<NavigationMenu.Link
 			href={item.href}
-			class="grid min-w-48 gap-1 border-border/80 bg-black/80 p-3 hover:bg-[#18181b]"
+			class="grid min-w-0 gap-1 border-border/80 bg-black/80 p-3 hover:bg-[#18181b]"
 		>
 			<span class="text-zinc-100">{item.title}</span>
 			<span class="text-[11px] tracking-normal normal-case text-terminal-muted">{item.eyebrow}</span
@@ -83,9 +83,9 @@
 <section
 	id="layout-showcase"
 	aria-labelledby="layout-showcase-title"
-	class="terminal-grid border-y border-border bg-black px-4 py-12 text-foreground sm:px-6 lg:px-8"
+	class="grid gap-5 text-foreground"
 >
-	<div class="mx-auto grid max-w-7xl gap-5">
+	<div class="grid gap-5">
 		<div class="grid gap-4 border border-border bg-black/90 p-4 sm:p-5">
 			<div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 				<div class="grid gap-3">
@@ -120,7 +120,7 @@
 					<NavigationMenu.List class="justify-start rounded-full border border-border bg-black p-1">
 						<NavigationMenu.Item>
 							<NavigationMenu.Trigger>Systems</NavigationMenu.Trigger>
-							<NavigationMenu.Content class="w-[min(92vw,42rem)]">
+							<NavigationMenu.Content class="!right-0 !left-auto !w-[min(34rem,calc(100vw-3rem))]">
 								<ul class="grid gap-2 p-1 sm:grid-cols-3">
 									{#each navItems as item (item.title)}
 										{@render NavCard({ item })}
@@ -129,26 +129,38 @@
 							</NavigationMenu.Content>
 						</NavigationMenu.Item>
 						<NavigationMenu.Item>
-							<NavigationMenu.Link href="#layout-showcase-review">Review</NavigationMenu.Link>
+							<NavigationMenu.Link
+								href="#layout-showcase-review"
+								class="h-9 rounded-full border-transparent px-4.5 py-2.5 hover:border-transparent hover:bg-zinc-50 hover:text-zinc-950 focus:border-transparent focus:bg-zinc-50 focus:text-zinc-950"
+							>
+								Review
+							</NavigationMenu.Link>
 						</NavigationMenu.Item>
 					</NavigationMenu.List>
-					<NavigationMenu.Indicator />
 				</NavigationMenu.Root>
 			</div>
 
 			<Separator />
 
-			<div class="grid gap-4 lg:grid-cols-[17rem_minmax(0,1fr)]">
-				<div id="layout-showcase-grid" class="min-h-[420px] border border-border bg-[#09090b]">
+			<div class="grid gap-4">
+				<div
+					id="layout-showcase-grid"
+					class="min-h-[420px] overflow-hidden border border-border bg-black"
+				>
 					<Sidebar.Provider
 						bind:open={sidebarOpen}
-						class="h-full! min-h-0! bg-transparent"
-						style="--sidebar-width: 100%; --sidebar-width-icon: 3rem;"
+						class="relative h-full! min-h-[420px]! bg-transparent"
+						style="--sidebar-width: 17rem; --sidebar-width-icon: 3rem;"
 					>
-						<Sidebar.Sidebar collapsible="none" class="border-r-0 bg-[#09090b]">
-							<Sidebar.Header>
-								<div class="flex items-center justify-between gap-3">
-									<div class="grid gap-1">
+						<Sidebar.Sidebar
+							collapsible="icon"
+							class="absolute! z-30! h-full! min-h-0! border-r border-border bg-[#09090b]"
+						>
+							<Sidebar.Header class="group-data-[collapsible=icon]:items-center">
+								<div
+									class="flex items-center justify-between gap-3 group-data-[collapsible=icon]:justify-center"
+								>
+									<div class="grid gap-1 group-data-[collapsible=icon]:hidden">
 										<span class="terminal-label">Workspace</span>
 										<span class="font-mono text-sm font-semibold text-zinc-100">violet-grid</span>
 									</div>
@@ -162,9 +174,13 @@
 										<Sidebar.Menu>
 											{#each sidebarItems as item (item.label)}
 												<Sidebar.MenuItem>
-													<Sidebar.MenuButton isActive={item.active}>
+													<Sidebar.MenuButton
+														isActive={item.active}
+														tooltipContent={item.label}
+														class="group-data-[collapsible=icon]:justify-center"
+													>
 														<span class="size-1.5 shrink-0 bg-terminal-violet-soft"></span>
-														<span>{item.label}</span>
+														<span class="group-data-[collapsible=icon]:hidden">{item.label}</span>
 													</Sidebar.MenuButton>
 													<Sidebar.MenuBadge>{item.count}</Sidebar.MenuBadge>
 												</Sidebar.MenuItem>
@@ -174,168 +190,187 @@
 								</Sidebar.Group>
 							</Sidebar.Content>
 							<Sidebar.Footer>
-								<div class="grid grid-cols-2 gap-2 font-mono text-[11px] text-zinc-500">
-									<span>uptime</span>
-									<span class="text-right text-success">99.9%</span>
+								<div
+									class="grid grid-cols-2 gap-2 font-mono text-[11px] text-zinc-500 group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center"
+								>
+									<span class="group-data-[collapsible=icon]:hidden">uptime</span>
+									<span class="text-right text-success group-data-[collapsible=icon]:hidden"
+										>99.9%</span
+									>
+									<span
+										aria-label="Uptime healthy"
+										class="hidden size-1.5 bg-success group-data-[collapsible=icon]:block"
+									></span>
 								</div>
 							</Sidebar.Footer>
 						</Sidebar.Sidebar>
-					</Sidebar.Provider>
-				</div>
+						<Sidebar.Inset class="min-h-[420px] border-0 bg-black">
+							<Tabs.Root id="layout-showcase-flow" bind:value={activeTab} class="min-w-0">
+								<Tabs.List
+									variant="line"
+									class="w-full justify-start overflow-x-auto border-border bg-black"
+								>
+									<Tabs.Trigger value="canvas">Canvas</Tabs.Trigger>
+									<Tabs.Trigger value="signals">Signals</Tabs.Trigger>
+									<Tabs.Trigger value="review">Review</Tabs.Trigger>
+								</Tabs.List>
 
-				<Tabs.Root id="layout-showcase-flow" bind:value={activeTab} class="min-w-0">
-					<Tabs.List
-						variant="line"
-						class="w-full justify-start overflow-x-auto border-border bg-black"
-					>
-						<Tabs.Trigger value="canvas">Canvas</Tabs.Trigger>
-						<Tabs.Trigger value="signals">Signals</Tabs.Trigger>
-						<Tabs.Trigger value="review">Review</Tabs.Trigger>
-					</Tabs.List>
+								<Tabs.Content value="canvas" class="min-h-[374px] p-0">
+									<Resizable.PaneGroup direction="horizontal" class="min-h-[374px]">
+										<Resizable.Pane defaultSize={62} minSize={42}>
+											<div class="grid h-full grid-rows-[auto_1fr]">
+												<div
+													class="flex items-center justify-between border-b border-border px-4 py-3"
+												>
+													<span class="terminal-label">Preview</span>
+													<Badge
+														variant="outline"
+														class="border-terminal-violet-soft/60 text-terminal-violet-soft"
+													>
+														Live
+													</Badge>
+												</div>
+												<div class="terminal-grid-sm grid content-center gap-4 p-4">
+													<div class="grid gap-3 border border-border bg-black/80 p-4">
+														<div class="h-2 w-24 bg-terminal-violet"></div>
+														<div class="grid gap-2 sm:grid-cols-3">
+															<div class="h-20 border border-border bg-[#18181b]"></div>
+															<div class="h-20 border border-border bg-[#09090b]"></div>
+															<div
+																class="h-20 border border-terminal-violet-soft/50 bg-[#18181b]"
+															></div>
+														</div>
+													</div>
+													<div class="grid grid-cols-3 gap-2 font-mono text-[11px] text-zinc-500">
+														<span>cols: 12</span>
+														<span>gap: 16</span>
+														<span>snap: on</span>
+													</div>
+												</div>
+											</div>
+										</Resizable.Pane>
+										<Resizable.Handle withHandle />
+										<Resizable.Pane defaultSize={38} minSize={28}>
+											<div class="grid h-full grid-rows-[auto_1fr]">
+												<div class="border-b border-border px-4 py-3">
+													<span class="terminal-label">Activity</span>
+												</div>
+												<ScrollArea class="h-[318px]" orientation="vertical">
+													<div class="grid gap-2 p-3">
+														{#each logLines as line (line)}
+															<div
+																class="border border-border bg-[#09090b] px-3 py-2 font-mono text-xs text-zinc-400"
+															>
+																{line}
+															</div>
+														{/each}
+													</div>
+												</ScrollArea>
+											</div>
+										</Resizable.Pane>
+									</Resizable.PaneGroup>
+								</Tabs.Content>
 
-					<Tabs.Content value="canvas" class="min-h-[374px] p-0">
-						<Resizable.PaneGroup direction="horizontal" class="min-h-[374px]">
-							<Resizable.Pane defaultSize={62} minSize={42}>
-								<div class="grid h-full grid-rows-[auto_1fr]">
-									<div class="flex items-center justify-between border-b border-border px-4 py-3">
-										<span class="terminal-label">Preview</span>
-										<Badge
-											variant="outline"
-											class="border-terminal-violet-soft/60 text-terminal-violet-soft"
-										>
-											Live
-										</Badge>
+								<Tabs.Content value="signals" class="min-h-[374px]">
+									<div class="grid gap-4 p-4 lg:grid-cols-[minmax(0,1fr)_16rem]">
+										<Accordion.Root type="single" bind:value={activeGate}>
+											<Accordion.Item value="motion">
+												<Accordion.Trigger>Motion budget</Accordion.Trigger>
+												<Accordion.Content>
+													<p>Transitions stay short, directional, and tied to component state.</p>
+												</Accordion.Content>
+											</Accordion.Item>
+											<Accordion.Item value="density">
+												<Accordion.Trigger>Density rules</Accordion.Trigger>
+												<Accordion.Content>
+													<p>
+														Panels favor scan-ready rows, stable heights, and restrained contrast.
+													</p>
+												</Accordion.Content>
+											</Accordion.Item>
+											<Accordion.Item value="access">
+												<Accordion.Trigger>Access paths</Accordion.Trigger>
+												<Accordion.Content>
+													<p>
+														Keyboard navigation remains native through the shadcn-svelte primitives.
+													</p>
+												</Accordion.Content>
+											</Accordion.Item>
+										</Accordion.Root>
+
+										<Collapsible.Root bind:open={notesOpen}>
+											<Collapsible.Trigger>
+												<span>Release notes</span>
+												<span class="text-terminal-violet-soft"
+													>{notesOpen ? 'Open' : 'Closed'}</span
+												>
+											</Collapsible.Trigger>
+											<Collapsible.Content>
+												<div class="grid gap-2">
+													{@render StatusRow({ label: 'Shell', value: 'Ready' })}
+													{@render StatusRow({ label: 'Routes', value: 'Stable' })}
+													{@render StatusRow({ label: 'Panels', value: 'Synced' })}
+												</div>
+											</Collapsible.Content>
+										</Collapsible.Root>
 									</div>
-									<div class="terminal-grid-sm grid content-center gap-4 p-4">
-										<div class="grid gap-3 border border-border bg-black/80 p-4">
-											<div class="h-2 w-24 bg-terminal-violet"></div>
-											<div class="grid gap-2 sm:grid-cols-3">
-												<div class="h-20 border border-border bg-[#18181b]"></div>
-												<div class="h-20 border border-border bg-[#09090b]"></div>
-												<div class="h-20 border border-terminal-violet-soft/50 bg-[#18181b]"></div>
+								</Tabs.Content>
+
+								<Tabs.Content id="layout-showcase-review" value="review" class="min-h-[374px] p-4">
+									<div class="grid h-full content-between gap-5">
+										<div class="grid gap-3 sm:grid-cols-3">
+											<div class="border border-border bg-[#09090b] p-4">
+												<p class="terminal-label">Current</p>
+												<p class="mt-3 font-mono text-2xl text-zinc-50">{activeReview}</p>
+											</div>
+											<div class="border border-border bg-[#09090b] p-4">
+												<p class="terminal-label">Pages</p>
+												<p class="mt-3 font-mono text-2xl text-zinc-50">06</p>
+											</div>
+											<div class="border border-border bg-[#09090b] p-4">
+												<p class="terminal-label">Items</p>
+												<p class="mt-3 font-mono text-2xl text-zinc-50">72</p>
 											</div>
 										</div>
-										<div class="grid grid-cols-3 gap-2 font-mono text-[11px] text-zinc-500">
-											<span>cols: 12</span>
-											<span>gap: 16</span>
-											<span>snap: on</span>
-										</div>
-									</div>
-								</div>
-							</Resizable.Pane>
-							<Resizable.Handle withHandle />
-							<Resizable.Pane defaultSize={38} minSize={28}>
-								<div class="grid h-full grid-rows-[auto_1fr]">
-									<div class="border-b border-border px-4 py-3">
-										<span class="terminal-label">Activity</span>
-									</div>
-									<ScrollArea class="h-[318px]" orientation="vertical">
-										<div class="grid gap-2 p-3">
-											{#each logLines as line (line)}
-												<div
-													class="border border-border bg-[#09090b] px-3 py-2 font-mono text-xs text-zinc-400"
-												>
-													{line}
+
+										<Pagination.Root
+											count={72}
+											perPage={12}
+											siblingCount={1}
+											bind:page={reviewPage}
+											class="justify-start"
+										>
+											{#snippet children({ pages, range })}
+												<div class="grid gap-3">
+													<Pagination.Content class="mx-0 w-fit rounded-none">
+														<Pagination.Item>
+															<Pagination.Previous />
+														</Pagination.Item>
+														{#each pages as page (page.key)}
+															<Pagination.Item>
+																{#if page.type === 'ellipsis'}
+																	<Pagination.Ellipsis />
+																{:else}
+																	<Pagination.Link {page} isActive={page.value === reviewPage} />
+																{/if}
+															</Pagination.Item>
+														{/each}
+														<Pagination.Item>
+															<Pagination.Next />
+														</Pagination.Item>
+													</Pagination.Content>
+													<p class="font-mono text-xs text-zinc-500">
+														Showing {range.start}-{range.end} of 72 layout checks.
+													</p>
 												</div>
-											{/each}
-										</div>
-									</ScrollArea>
-								</div>
-							</Resizable.Pane>
-						</Resizable.PaneGroup>
-					</Tabs.Content>
-
-					<Tabs.Content value="signals" class="min-h-[374px]">
-						<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_16rem]">
-							<Accordion.Root type="single" bind:value={activeGate}>
-								<Accordion.Item value="motion">
-									<Accordion.Trigger>Motion budget</Accordion.Trigger>
-									<Accordion.Content>
-										<p>Transitions stay short, directional, and tied to component state.</p>
-									</Accordion.Content>
-								</Accordion.Item>
-								<Accordion.Item value="density">
-									<Accordion.Trigger>Density rules</Accordion.Trigger>
-									<Accordion.Content>
-										<p>Panels favor scan-ready rows, stable heights, and restrained contrast.</p>
-									</Accordion.Content>
-								</Accordion.Item>
-								<Accordion.Item value="access">
-									<Accordion.Trigger>Access paths</Accordion.Trigger>
-									<Accordion.Content>
-										<p>Keyboard navigation remains native through the shadcn-svelte primitives.</p>
-									</Accordion.Content>
-								</Accordion.Item>
-							</Accordion.Root>
-
-							<Collapsible.Root bind:open={notesOpen}>
-								<Collapsible.Trigger>
-									<span>Release notes</span>
-									<span class="text-terminal-violet-soft">{notesOpen ? 'Open' : 'Closed'}</span>
-								</Collapsible.Trigger>
-								<Collapsible.Content>
-									<div class="grid gap-2">
-										{@render StatusRow({ label: 'Shell', value: 'Ready' })}
-										{@render StatusRow({ label: 'Routes', value: 'Stable' })}
-										{@render StatusRow({ label: 'Panels', value: 'Synced' })}
+											{/snippet}
+										</Pagination.Root>
 									</div>
-								</Collapsible.Content>
-							</Collapsible.Root>
-						</div>
-					</Tabs.Content>
-
-					<Tabs.Content id="layout-showcase-review" value="review" class="min-h-[374px]">
-						<div class="grid h-full content-between gap-5">
-							<div class="grid gap-3 sm:grid-cols-3">
-								<div class="border border-border bg-[#09090b] p-4">
-									<p class="terminal-label">Current</p>
-									<p class="mt-3 font-mono text-2xl text-zinc-50">{activeReview}</p>
-								</div>
-								<div class="border border-border bg-[#09090b] p-4">
-									<p class="terminal-label">Pages</p>
-									<p class="mt-3 font-mono text-2xl text-zinc-50">06</p>
-								</div>
-								<div class="border border-border bg-[#09090b] p-4">
-									<p class="terminal-label">Items</p>
-									<p class="mt-3 font-mono text-2xl text-zinc-50">72</p>
-								</div>
-							</div>
-
-							<Pagination.Root
-								count={72}
-								perPage={12}
-								siblingCount={1}
-								bind:page={reviewPage}
-								class="justify-start"
-							>
-								{#snippet children({ pages, range })}
-									<div class="grid gap-3">
-										<Pagination.Content class="mx-0 w-fit rounded-none">
-											<Pagination.Item>
-												<Pagination.Previous />
-											</Pagination.Item>
-											{#each pages as page (page.key)}
-												<Pagination.Item>
-													{#if page.type === 'ellipsis'}
-														<Pagination.Ellipsis />
-													{:else}
-														<Pagination.Link {page} isActive={page.value === reviewPage} />
-													{/if}
-												</Pagination.Item>
-											{/each}
-											<Pagination.Item>
-												<Pagination.Next />
-											</Pagination.Item>
-										</Pagination.Content>
-										<p class="font-mono text-xs text-zinc-500">
-											Showing {range.start}-{range.end} of 72 layout checks.
-										</p>
-									</div>
-								{/snippet}
-							</Pagination.Root>
-						</div>
-					</Tabs.Content>
-				</Tabs.Root>
+								</Tabs.Content>
+							</Tabs.Root>
+						</Sidebar.Inset>
+					</Sidebar.Provider>
+				</div>
 			</div>
 		</div>
 	</div>

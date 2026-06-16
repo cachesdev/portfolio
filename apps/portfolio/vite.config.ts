@@ -2,9 +2,14 @@ import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import tailwindcss from '@tailwindcss/vite';
 import adapter from '@sveltejs/adapter-node';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, searchForWorkspaceRoot } from 'vite';
 
 export default defineConfig({
+	server: {
+		fs: {
+			allow: [searchForWorkspaceRoot(process.cwd())]
+		}
+	},
 	plugins: [
 		tailwindcss(),
 		sveltekit({
