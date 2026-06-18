@@ -1,39 +1,39 @@
 <script lang="ts">
-	import type { WithoutChildren } from 'bits-ui';
-	import { getEmblaContext } from './context.js';
-	import { cn } from '$lib/utils.js';
-	import { Button, type Props } from '$lib/components/ui/button/index.js';
-	import CaretRightIcon from 'phosphor-svelte/lib/CaretRight';
+  import type { WithoutChildren } from 'bits-ui';
+  import { getEmblaContext } from './context.js';
+  import { cn } from '$lib/utils.js';
+  import { Button, type Props } from '$lib/components/ui/button/index.js';
+  import CaretRightIcon from 'phosphor-svelte/lib/CaretRight';
 
-	let {
-		ref = $bindable(null),
-		class: className,
-		variant = 'outline',
-		size = 'icon-sm',
-		...restProps
-	}: WithoutChildren<Props> = $props();
+  let {
+    ref = $bindable(null),
+    class: className,
+    variant = 'outline',
+    size = 'icon-sm',
+    ...restProps
+  }: WithoutChildren<Props> = $props();
 
-	const emblaCtx = getEmblaContext('<Carousel.Next/>');
+  const emblaCtx = getEmblaContext('<Carousel.Next/>');
 </script>
 
 <Button
-	data-slot="carousel-next"
-	{variant}
-	{size}
-	aria-disabled={!emblaCtx.canScrollNext}
-	disabled={!emblaCtx.canScrollNext}
-	class={cn(
-		'cn-carousel-next absolute rounded-full border-zinc-800 bg-black text-zinc-300 touch-manipulation hover:border-[#556af3] hover:bg-[#3526ff] hover:text-white',
-		emblaCtx.orientation === 'horizontal'
-			? '-end-12 top-1/2 -translate-y-1/2'
-			: 'start-1/2 -bottom-12 -translate-x-1/2 rotate-90',
-		className
-	)}
-	onclick={emblaCtx.scrollNext}
-	onkeydown={emblaCtx.handleKeyDown}
-	bind:ref
-	{...restProps}
+  data-slot="carousel-next"
+  {variant}
+  {size}
+  aria-disabled={!emblaCtx.canScrollNext}
+  disabled={!emblaCtx.canScrollNext}
+  class={cn(
+    'cn-carousel-next absolute rounded-full border-zinc-800 bg-background text-zinc-300 touch-manipulation hover:border-[#d0e891] hover:bg-[#b9d765] hover:text-[#101207]',
+    emblaCtx.orientation === 'horizontal'
+      ? '-end-12 top-1/2 -translate-y-1/2'
+      : 'start-1/2 -bottom-12 -translate-x-1/2 rotate-90',
+    className
+  )}
+  onclick={emblaCtx.scrollNext}
+  onkeydown={emblaCtx.handleKeyDown}
+  bind:ref
+  {...restProps}
 >
-	<CaretRightIcon />
-	<span class="sr-only">Next slide</span>
+  <CaretRightIcon />
+  <span class="sr-only">Next slide</span>
 </Button>

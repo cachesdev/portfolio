@@ -1,12 +1,11 @@
 <script lang="ts">
-	import ShowcaseShell from '$lib/showcase/ShowcaseShell.svelte';
-	import OverlaysShowcase from '$lib/showcase/OverlaysShowcase.svelte';
+  import ShowcaseShell from '$lib/showcase/ShowcaseShell.svelte';
+  import OverlaysShowcase from '$lib/showcase/OverlaysShowcase.svelte';
 </script>
 
 <ShowcaseShell
-	title="Overlays & menus"
-	label="portals"
-	description="Portal-heavy components shown together: dialogs, drawers, sheets, menus, command palette, popovers, tooltips, and toast feedback."
+  title="Overlays & menus"
+  description="Dialogs, sheets, drawers, command menus, popovers, tooltips, and toast feedback with focus paths visible."
 >
-	<OverlaysShowcase />
+  <OverlaysShowcase />
 </ShowcaseShell>

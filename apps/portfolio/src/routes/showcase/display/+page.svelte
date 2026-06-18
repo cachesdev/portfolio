@@ -1,12 +1,11 @@
 <script lang="ts">
-	import ShowcaseShell from '$lib/showcase/ShowcaseShell.svelte';
-	import DisplayShowcase from '$lib/showcase/DisplayShowcase.svelte';
+  import ShowcaseShell from '$lib/showcase/ShowcaseShell.svelte';
+  import DisplayShowcase from '$lib/showcase/DisplayShowcase.svelte';
 </script>
 
 <ShowcaseShell
-	title="Display & data"
-	label="surfaces"
-	description="Static and data-heavy surfaces: cards, alerts, avatars, charts, media frames, tables, calendars, empty states, and skeletons."
+  title="Display & data"
+  description="Cards, alerts, avatars, chart frames, tables, calendars, empty states, and skeletons for reading dense information."
 >
-	<DisplayShowcase />
+  <DisplayShowcase />
 </ShowcaseShell>
